@@ -4,12 +4,16 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 
 
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
+import javax.swing.text.html.Option;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,15 +26,19 @@ import static java.nio.channels.Selector.open;
 
 
 public class СardDeliveryForm {
+    
 
     private String generateDate(int addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
     }
 
 
+
     @Test
     public void shouldTestCardDeliveryForm() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -47,6 +55,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestAnotherCity() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Лабинск");
@@ -65,6 +74,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCityOnABC() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Labinck");
@@ -83,6 +93,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCitySymbols() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("###@@66");
@@ -101,6 +112,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCityNotSpecified() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("");
@@ -119,6 +131,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestNoDate() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -134,6 +147,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenOnDateAllZeros() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -149,29 +163,13 @@ public class СardDeliveryForm {
     }
 
 
-   // @Test
-   // public void shouldTestThenDateEarlierThanThreeDaysFromTheCurrentDate() {
-      //  Configuration.holdBrowserOpen = true;
 
-       // Selenide.open("http://localhost:9999/");
-       // $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
-
-        //String currentDate = generateDate(3, "dd.MM.yyyy");
-       // $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        //$("[data-test-id=date] input").setValue(currentDate);
-       // $("[name=name]").setValue("Кузнецов Сергей");
-       //// $("[name=phone]").setValue("+79188055655");
-       // $(".checkbox__box").click();
-       // $x("//*[contains(text(), 'Забронировать')]").click();
-        //$x("//*[contains(text(), 'Заказ на выбранную дату невозможен')]").shouldBe(Condition.visible, Duration.ofSeconds(15));
-
-
-   // }
 
 
     @Test
     public void shouldTestThenLastNameWithHyphen() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -189,6 +187,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestWithoutLastName() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -206,6 +205,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenLastNameABC() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -223,6 +223,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenLastNameSymbol() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -240,6 +241,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenPhoneFieldHasFiveDigits() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -257,6 +259,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenPhoneFieldWithoutANumber() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -274,6 +277,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheNumberStartsWith8() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -291,6 +295,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheNumberMoreThan11Digits() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -308,6 +313,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheFlagIsNotSet() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -324,6 +330,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestSelectCityFromTheList() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Кра");
@@ -342,6 +349,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestSelectDataFromTheList() {
         Configuration.holdBrowserOpen = true;
+        Configuration.headless = true;
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
