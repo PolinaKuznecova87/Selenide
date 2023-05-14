@@ -14,9 +14,15 @@ import org.openqa.selenium.WebDriver;
 import javax.annotation.CheckReturnValue;
 import javax.annotation.Nonnull;
 import javax.swing.text.html.Option;
+import javax.xml.crypto.Data;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withTextCaseInsensitive;
@@ -26,18 +32,17 @@ import static java.nio.channels.Selector.open;
 
 
 public class СardDeliveryForm {
-    
+
 
     private String generateDate(int addDays, String pattern) {
         return LocalDate.now().plusDays(addDays).format(DateTimeFormatter.ofPattern(pattern));
-    }
 
+    }
 
 
     @Test
     public void shouldTestCardDeliveryForm() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
 
 
         Selenide.open("http://localhost:9999/");
@@ -52,10 +57,11 @@ public class СardDeliveryForm {
         $x("//div[@class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
     }
 
+
     @Test
     public void shouldTestAnotherCity() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Лабинск");
@@ -74,7 +80,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCityOnABC() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Labinck");
@@ -93,7 +99,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCitySymbols() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("###@@66");
@@ -112,7 +118,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenNameOfTheCityNotSpecified() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("");
@@ -131,7 +137,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestNoDate() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -147,7 +153,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenOnDateAllZeros() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -163,13 +169,10 @@ public class СardDeliveryForm {
     }
 
 
-
-
-
     @Test
     public void shouldTestThenLastNameWithHyphen() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -187,7 +190,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestWithoutLastName() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -205,7 +208,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenLastNameABC() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -223,7 +226,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenLastNameSymbol() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -241,7 +244,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenPhoneFieldHasFiveDigits() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -259,7 +262,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenPhoneFieldWithoutANumber() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -277,7 +280,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheNumberStartsWith8() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -295,7 +298,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheNumberMoreThan11Digits() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -313,7 +316,7 @@ public class СardDeliveryForm {
     @Test
     public void shouldTestThenTheFlagIsNotSet() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
         $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
@@ -327,45 +330,51 @@ public class СardDeliveryForm {
         $(".checkbox__box").shouldBe();
     }
 
-    @Test
-    public void shouldTestSelectCityFromTheList() {
+
+    @Test //проверить всплывающего сообщения и дату запланированной встречи
+    public void shouldTestRegistrationOfTheMeetingOnTheDate() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+        String currentDate = generateDate(3, "dd.MM.yyyy");
+
 
         Selenide.open("http://localhost:9999/");
-        $$("[type=text]").filter(Condition.visible).first().setValue("Кра");
-        $$(".menu-item__control").find(Condition.exactText("Краснодар")).click();
-
-        String currentDate = generateDate(3, "dd.MM.yyyy");
+        $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
         $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id=date] input").setValue(currentDate);
         $("[name=name]").setValue("Кузнецов Сергей");
         $("[name=phone]").setValue("+79188055655");
         $(".checkbox__box").click();
         $x("//*[contains(text(), 'Забронировать')]").click();
-        $x("//div[@class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + currentDate), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
+
+
     }
+
 
     @Test
     public void shouldTestSelectDataFromTheList() {
         Configuration.holdBrowserOpen = true;
-        Configuration.headless = true;
+
 
         Selenide.open("http://localhost:9999/");
-        $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
-        String currentDate = generateDate(7, "dd.MM.yyyy");
+        $$("[type=text]").filter(Condition.visible).first().setValue("Кра");
+        $$(".menu-item__control").find(Condition.exactText("Краснодар")).click();
+
+        // $$("[type=text]").filter(Condition.visible).first().setValue("Краснодар");
+        String planningDate = generateDate(7, "dd.MM.yyyy");
         $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
-        $$("[data-step='1']").find(Condition.exactText("Апрель"));
-
-
-        $$(".calendar__day").find(Condition.exactText("23")).click();
-
+        $(".input__icon").click();
+        $("[placeholder='Дата встречи']").setValue(planningDate);
 
         $("[name=name]").setValue("Кузнецов Сергей");
         $("[name=phone]").setValue("+79188055655");
         $(".checkbox__box").click();
         $x("//*[contains(text(), 'Забронировать')]").click();
-        $x("//div[@class='notification__title']").shouldBe(Condition.visible, Duration.ofSeconds(15));
+        $(".notification__content")
+                .shouldHave(Condition.text("Встреча успешно забронирована на " + planningDate), Duration.ofSeconds(15))
+                .shouldBe(Condition.visible);
     }
 
 
